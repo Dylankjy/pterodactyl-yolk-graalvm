@@ -1,5 +1,5 @@
 # pterodactyl-yolks-java
-This repository contains Dockerfile for a Pterodactyl yolks that I've custom compiled for personal use.
+This repository contains the Dockerfiles for a bunch of Pterodactyl yolks that I've custom compiled for personal use.
 
 ---
 
