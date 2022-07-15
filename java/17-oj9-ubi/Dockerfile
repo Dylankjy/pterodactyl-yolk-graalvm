@@ -9,7 +9,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Install basic dependencies
-RUN microdnf install fontconfig glibc-langpack-en iproute openssl openssh sqlite tar wget gzip git \
+RUN microdnf install fontconfig glibc-langpack-en iproute openssl openssh sqlite tar wget gzip git libstdc++ \
     && microdnf update \
     && microdnf clean all \
     && sed -i 's/^LANG=.*/LANG="en_US.utf8"/' /etc/locale.conf
