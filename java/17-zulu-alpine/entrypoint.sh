@@ -43,10 +43,7 @@ if [ ! -z ${PRE_STARTUP_SCRIPT}] && [ -f ${PRE_STARTUP_SCRIPT} ] ; then
     ./PRE_STARTUP_SCRIPT
 
     else 
-
-    echo -e "Skipping prestart script. "
-
-    echo -e
+    echo -e "Skipping prestart script (Script does not exist or environment variable empty)."
 fi
 
 # Replace variables in the startup command
