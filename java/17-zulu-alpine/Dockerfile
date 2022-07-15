@@ -9,7 +9,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Install basic dependencies
-RUN apk add fontconfig gcompat sqlite iproute2 openssl openssh-client openssh tar wget gzip && \
+RUN apk add fontconfig gcompat sqlite iproute2 openssl openssh-client openssh tar wget gzip git && \
     apk update
 
 # Install Azul Zulu
