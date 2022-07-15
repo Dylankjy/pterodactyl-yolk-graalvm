@@ -25,7 +25,7 @@ ENV JAVA_HOME=/java/jdk-17.0.3+7-jre
 ENV	PATH=/java/jdk-17.0.3+7-jre/bin:$PATH
 
 # Add container user
-RUN adduser --home-dir /home/container container
+RUN adduser --home-dir /home/container -u 998 container
 USER		container
 ENV			USER=container HOME=/home/container
 WORKDIR		/home/container
