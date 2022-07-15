@@ -24,5 +24,11 @@ USER		container
 ENV			USER=container HOME=/home/container
 WORKDIR		/home/container
 
+# Create .ssh directory
+RUN mkdir .ssh
+
+# Add Github SSH fingerprint
+RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
 COPY		./entrypoint.sh /entrypoint.sh
 CMD			[ "/bin/ash", "/entrypoint.sh" ]

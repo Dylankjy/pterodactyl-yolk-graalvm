@@ -33,6 +33,14 @@ export INTERNAL_IP
 # Switch to the container's working directory
 cd /home/container || exit 1
 
+# Start ssh-agent and add GH Key
+if [ ! -z ${GH_KEY_PATH} ] && [ -f ${GH_KEY_PATH} ] ; then
+    echo -e "Initialising ssh-agent and installing Github SSH Key provided at: ${GH_KEY_PATH}"
+    eval `ssh-agent -s`
+    chmod 600 ./${GH_KEY_PATH}
+    ssh-add ./${GH_KEY_PATH}
+fi
+
 # Print Java version
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
 java -version
