@@ -35,7 +35,7 @@ cd /home/container || exit 1
 
 # Start ssh-agent and add GH Key
 if [ ! -z ${GH_KEY_PATH} ] && [ -f ${GH_KEY_PATH} ] ; then
-    echo -e "Initialising ssh-agent and installing Github SSH Key provided at: ${GH_KEY_PATH}"
+    echo -e ">>> Initialising ssh-agent and installing Github SSH Key provided at: ${GH_KEY_PATH}"
     eval `ssh-agent -s`
     chmod 600 ./${GH_KEY_PATH}
     ssh-add ./${GH_KEY_PATH}
@@ -45,13 +45,13 @@ fi
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
 java -version
 
-if [ ! -z ${PRE_STARTUP_SCRIPT}] && [ -f ${PRE_STARTUP_SCRIPT} ] ; then
-    echo -e "Running prestart script located at: ${PRE_STARTUP_SCRIPT}"
-    chmod +x PRE_STARTUP_SCRIPT
-    ./PRE_STARTUP_SCRIPT
+if [ ! -z ${PRE_STARTUP_SCRIPT} ] ; then
+    echo -e ">>> Running prestart script located at: ${PRE_STARTUP_SCRIPT}"
+    chmod +x ${PRE_STARTUP_SCRIPT}
+    ./${PRE_STARTUP_SCRIPT}
 
     else 
-    echo -e "Skipping prestart script (Script does not exist or environment variable empty)."
+    echo -e ">>> Skipping prestart script (Environment variable empty)."
 fi
 
 # Replace variables in the startup command
