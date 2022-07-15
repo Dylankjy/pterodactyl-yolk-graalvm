@@ -37,6 +37,18 @@ cd /home/container || exit 1
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
 java -version
 
+if [ ! -z ${PRE_STARTUP_SCRIPT}] && [ -f ${PRE_STARTUP_SCRIPT} ] ; then
+    echo -e "Running prestart script located at: ${PRE_STARTUP_SCRIPT}"
+    chmod +x PRE_STARTUP_SCRIPT
+    ./PRE_STARTUP_SCRIPT
+
+    else 
+
+    echo -e "Skipping prestart script. "
+
+    echo -e
+fi
+
 # Replace variables in the startup command
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$PARSED"
