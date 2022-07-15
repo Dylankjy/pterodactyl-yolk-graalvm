@@ -18,7 +18,8 @@ RUN microdnf install fontconfig glibc-langpack-en iproute openssl openssh sqlite
 WORKDIR /
 RUN wget https://github.com/ibmruntimes/semeru17-certified-binaries/releases/download/jdk-17.0.3%2B7_openj9-0.32.0/ibm-semeru-certified-jre_x64_linux_17.0.3.0.tar.gz \
     && mkdir java \
-    && tar -xzf ibm-semeru-certified-jre_x64_linux_17.0.3.0.tar.gz -C /java
+    && tar -xzf ibm-semeru-certified-jre_x64_linux_17.0.3.0.tar.gz -C /java \
+    && rm ibm-semeru-certified-jre_x64_linux_17.0.3.0.tar.gz
 
 ENV JAVA_HOME=/java/jdk-17.0.3+7-jre
 ENV	PATH=/java/jdk-17.0.3+7-jre/bin:$PATH
