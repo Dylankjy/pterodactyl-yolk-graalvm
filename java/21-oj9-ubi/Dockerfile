@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH registry.access.redhat.com/ubi8/ubi-minimal:latest
+FROM --platform=$TARGETOS/$TARGETARCH registry.access.redhat.com/ubi9/ubi-minimal:latest
 
 LABEL		author="Dylan Kok" maintainer="me@dylankjy.com"
 LABEL		org.opencontainers.image.source="https://github.com/Dylankjy/pterodactyl-yolk-graalvm"
@@ -9,9 +9,9 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Install basic dependencies
-RUN microdnf install fontconfig glibc-langpack-en iproute openssl openssh sqlite tar wget gzip git libstdc++ \
-    && microdnf update \
-    && microdnf clean all \
+RUN microdnf install fontconfig glibc-langpack-en iproute openssl openssh sqlite tar wget gzip git libstdc++ -y \
+    && microdnf update -y \
+    && microdnf clean all -y \
     && sed -i 's/^LANG=.*/LANG="en_US.utf8"/' /etc/locale.conf
 
 # Install OpenJDK with OpenJ9
